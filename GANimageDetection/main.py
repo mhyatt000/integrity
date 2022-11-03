@@ -63,7 +63,7 @@ if __name__ == "__main__":
         fid.flush()
 
         for index, filename in enumerate(list_files):
-            print("\r%5d/%d" % (index, num_files))
+            print(f"%5d/%d" % (index, num_files), end="\r")
 
             tic = time.time()
             img = Image.open(filename).convert("RGB")
