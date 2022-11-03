@@ -1,6 +1,13 @@
 # torch models
 *.pth
 *.pt
+
+# images
+*.png
+*.jpg
+*.zip
+
+
 #
 #
 # Byte-compiled / optimized / DLL files
