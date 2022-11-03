@@ -176,8 +176,8 @@ class ResNet(nn.Module):
             print("err:", pil.size)
             with torch.no_grad():
                 img = self.transform(pil)
-                list_logit = list()
-                list_weight = list()
+                list_logit ,  list_weight = list(), list()
+
                 for index0 in range(0, img.shape[-2], LIMIT_SLIDE):
                     for index1 in range(0, img.shape[-1], LIMIT_SLIDE):
                         clip = img[
@@ -185,12 +185,14 @@ class ResNet(nn.Module):
                             index0 : min(index0 + LIMIT_SLIDE, img.shape[-2]),
                             index1 : min(index1 + LIMIT_SLIDE, img.shape[-1]),
                         ]
+
                         logit = torch.squeeze(self(clip.to(device)[None, :, :, :])).cpu().numpy()
                         weight = clip.shape[-2] * clip.shape[-1]
                         list_logit.append(logit)
                         list_weight.append(weight)
 
             logit = np.mean(np.asarray(list_logit) * np.asarray(list_weight)) / np.mean(list_weight)
+
         else:
             with torch.no_grad():
                 logit = (
