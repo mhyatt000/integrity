@@ -11,6 +11,7 @@ import argparse
 import glob
 import os
 import time
+import pandas as pd
 
 from PIL import Image
 from torch.cuda import is_available as is_available_cuda
@@ -62,8 +63,8 @@ if __name__ == "__main__":
         fid.write("filename,logit,time\n")
         fid.flush()
 
-        for index, filename in enumerate(list_files):
-            print(f"%5d/%d" % (index, num_files), end="\r")
+        for i, filename in enumerate(list_files):
+            print(f"%5d/%d" % (i+1, num_files), end="\r")
 
             tic = time.time()
             img = Image.open(filename).convert("RGB")
@@ -73,6 +74,9 @@ if __name__ == "__main__":
 
             fid.write("%s,%f,%f\n" % (filename, logit, toc - tic))
             fid.flush()
+
+    df = pd.read_csv(args.output_csv)
+    print(df)
 
     print("\nDONE")
     print("OUTPUT: %s" % args.output_csv)

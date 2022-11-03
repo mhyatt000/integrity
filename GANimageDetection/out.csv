@@ -1,0 +1,13 @@
+filename,logit,time
+example_images/fake_biggan.png,16.589951,2.550062
+example_images/fake_cyclegan.png,1.151353,2.519627
+example_images/fake_pix2pix.png,21.106691,2.549062
+example_images/fake_progan.png,13.289328,2.532540
+example_images/fake_realgan.png,7.790511,2.521959
+example_images/fake_stylegan.png,26.505709,2.527369
+example_images/real_biggan.png,-28.203768,2.524824
+example_images/real_cyclegan.png,-8.846191,2.533214
+example_images/real_pix2pix.png,-10.887372,2.489254
+example_images/real_progan.png,-22.655123,2.503661
+example_images/real_realgan.png,-9.337027,2.512746
+example_images/real_stylegan.png,-22.674416,2.501771
